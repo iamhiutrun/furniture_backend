@@ -11,6 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 //@RestController
 //@RequestMapping
 //public class UserController {
@@ -76,6 +78,11 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse<User>("Đã cập nhật", HttpStatus.OK));
         }
         return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse<User>("Không tìm thấy sản phẩm", HttpStatus.OK));
+    }
+
+    @GetMapping("/getAll")
+    public ResponseEntity<?> getAll() {
+        return ResponseEntity.status(HttpStatus.OK).body(new ApiResponse<List<User>>("Danh sách User", HttpStatus.OK, userService.findAll()));
     }
 
 }

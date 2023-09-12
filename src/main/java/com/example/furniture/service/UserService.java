@@ -13,7 +13,9 @@ public class UserService {
     private UserRepository userRepository;
 
     public User register(User user) {
+        System.out.println(user.toString());
         User existedUser = userRepository.findByEmail(user.getEmail());
+        System.out.println(existedUser.toString());
         if(existedUser != null){
             return null;
         }
@@ -79,5 +81,9 @@ public class UserService {
             return true;
         }
         return false;
+    }
+
+    public List<User> findAll(){
+        return userRepository.findAll();
     }
 }

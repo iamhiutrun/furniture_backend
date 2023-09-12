@@ -26,7 +26,28 @@ public class ProductService {
     }
 
     public Product createProduct(Product product){
-        return productRepository.save(product);
+        Product newProduct = product;
+        if(product.getProductId() != null){
+           Optional<Product> optionalProduct =  productRepository.findById(product.getProductId());
+           if(optionalProduct.isPresent()){
+               newProduct = optionalProduct.get();
+               newProduct.setCategoryId(product.getCategoryId());
+               newProduct.setCreatedAt(product.getCreatedAt());
+               newProduct.setName(product.getName());
+               newProduct.setDescription(product.getDescription());
+               newProduct.setPrice(product.getPrice());
+               if(product.getImagesList() !=null) {
+                   newProduct.setImagesList(product.getImagesList());
+               }
+               newProduct.setColorsList(product.getColorsList());
+           }
+
+        }
+        return productRepository.save(newProduct);
+    }
+
+    public void deleteProduct(Product product){
+        productRepository.delete(product);
     }
 
     public List<Product> getProductsByIds(List<Long> ids){

@@ -28,6 +28,7 @@ public class CartService {
                     newCart.setColor(cart.getColor());
                 }
             }
+            cartRepository.deleteByUserId(cart.getUserId());
         }
         return cartRepository.save(newCart);
     }

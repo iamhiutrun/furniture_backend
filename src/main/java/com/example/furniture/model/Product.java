@@ -34,6 +34,17 @@ public class Product {
         this.createdAt = createdAt;
     }
 
+    public Product(Long productId, String name, Double price, String description, Integer categoryId, String colorsList, String imagesList, Date createdAt) {
+        this.productId = productId;
+        this.name = name;
+        this.price = price;
+        this.description = description;
+        this.categoryId = categoryId;
+        this.colorsList = colorsList;
+        this.imagesList = imagesList;
+        this.createdAt = createdAt;
+    }
+
     public Product() {
     }
 

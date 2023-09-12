@@ -1,6 +1,7 @@
 package com.example.furniture.service;
 
 import com.example.furniture.model.Order;
+import com.example.furniture.repository.CartRepository;
 import com.example.furniture.repository.OrderRepository;
 import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,9 @@ import java.util.Optional;
 public class OrderService {
     @Autowired
     private OrderRepository orderRepository;
+
+    @Autowired
+    private CartRepository cartRepository;
 
     public Order addAndUpdateOrder(Order order){
         Order newOrder = order;

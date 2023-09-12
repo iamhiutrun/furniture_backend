@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface CartRepository extends JpaRepository<Cart, Long> {
     // Additional custom methods can be defined here if needed
+    void deleteByUserId(Long userId);
 }

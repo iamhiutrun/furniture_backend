@@ -11,15 +11,19 @@ public class Cart {
     private Long cartId;
     @Column(name = "product_id")
     private Long productId;
+
+    @Column(name = "user_id")
+    private Long userId;
     @Column(name = "quantity")
     private int quantity;
     @Column(name = "color")
     private String color;
 
-    public Cart(Long productId, int quantity, String color) {
+    public Cart(Long productId, int quantity, String color, Long userId) {
         this.productId = productId;
         this.quantity = quantity;
         this.color = color;
+        this.userId = userId;
     }
 
     public Cart(){
@@ -58,6 +62,14 @@ public class Cart {
         this.color = color;
     }
 
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
     @Override
     public String toString() {
         return "Cart{" +
@@ -65,6 +77,7 @@ public class Cart {
                 ", productId=" + productId +
                 ", quantity=" + quantity +
                 ", color='" + color + '\'' +
+                ", userId='" + userId + '\'' +
                 '}';
     }
 }
